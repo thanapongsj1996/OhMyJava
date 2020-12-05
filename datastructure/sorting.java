@@ -6,7 +6,7 @@ public class sorting {
     public static void main(String[] args) {
         System.out.println("------ Start ------");
 
-        int n = 50000;
+        int n = 10;
         int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
             arr[i] = (int) (Math.random() * 1000);
@@ -46,6 +46,19 @@ public class sorting {
         x2 = System.currentTimeMillis();
         // System.out.println("Insertion Sort O(n^2) : " + Arrays.toString(arr));
         System.out.println("Insertion Sort O(n^2) takes time : " + (x2 - x1) + " milliseconds");
+
+        System.out.println("--------------------------");
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = (int) (Math.random() * 1000);
+        }
+
+        // System.out.println("Random numbers : " + Arrays.toString(arr));
+        x1 = System.currentTimeMillis();
+        mergeSort(arr, 0, arr.length - 1);
+        x2 = System.currentTimeMillis();
+        System.out.println("MergeSort Sort O(nlog(n)) : " + Arrays.toString(arr));
+        System.out.println("MergeSort Sort O(nlog(n)) takes time : " + (x2 - x1) + " milliseconds");
     }
 
     public static int[] bubbleSort(int[] arr) {
@@ -96,6 +109,47 @@ public class sorting {
         }
 
         return arr;
+    }
+
+    public static void mergeSort(int[] arr, int l, int r) {
+        if (l == r) return;
+
+        int m = (l + r) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m+1, r);
+
+        int[] b = new int[r-l+1];
+        int k = 0;
+        int i = l;
+        int j = m + 1;
+
+        while (i <= m && j <= r) {
+            if (arr[i] < arr[j]) {
+                b[k] = arr[i];
+                k++; i++;
+            } else {
+                b[k] = arr[j];
+                k++; j++;
+            }
+        }
+
+        while (i <= m) {
+            b[k] = arr[i];
+            k++; i++;
+        }
+        while (j <= r) {
+            b[k] = arr[j];
+            k++;
+            j++;
+        }
+
+        i = l;
+        k = 0;
+
+        for (; i <= r; i++) {
+            arr[i] = b[k];
+            k++;
+        }
     }
 }
 
