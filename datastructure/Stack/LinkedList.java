@@ -1,11 +1,15 @@
-package datastructure.LikedList;
+package datastructure.Stack;
 
-public class LikedList {
-    Node head;
+import java.security.InvalidParameterException;
+
+public class LinkedList {
+    public Node head;
+    public int size;
 
     // Constructor
-    public LikedList() {
+    public LinkedList() {
         head = new Node();
+        size = 0;
     }
 
     public void addFirst(int x) {
@@ -13,6 +17,7 @@ public class LikedList {
         n.data = x;
         n.next = head.next;
         head.next = n;
+        size++;
     }
 
     public void addLast(int x) {
@@ -22,6 +27,7 @@ public class LikedList {
         }
         n.next = new Node();
         n.next.data = x;
+        size++;
     }
 
     public void insertAt(int x, int index) {
@@ -38,13 +44,28 @@ public class LikedList {
     }
 
     public void removeAt(int index) {
-        int k = 0;
-        Node n = head;
-        while (n != null && k < index) {
-            n = n.next;
-            k++;
+        if (index < 0 || index >= size) {
+            throw new InvalidParameterException("index out of range : " + index);
         }
-        if (n.next == null) return;
+        int i = 0;
+        Node n = head;
+        while (n.next != null && i < index) {
+            n = n.next;
+            i++;
+        }
         n.next = n.next.next;
+    }
+
+    public int get(int index) {
+        if (index < 0 || index >= size) {
+            throw new InvalidParameterException("index out of range : " + index);
+        }
+        int i = 0;
+        Node n = head;
+        while (n.next != null && i <= index) {
+            n = n.next;
+            i++;
+        }
+        return n.data;
     }
 }

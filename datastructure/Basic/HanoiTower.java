@@ -1,3 +1,5 @@
+package datastructure.Basic;
+
 public class HanoiTower {
     int[][] x = new int[3][5];
 

@@ -1,4 +1,4 @@
-package Basic;
+package datastructure.Basic;
 
 import java.util.Arrays;
 

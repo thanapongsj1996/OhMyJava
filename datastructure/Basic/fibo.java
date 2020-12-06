@@ -1,4 +1,4 @@
-package Basic;
+package datastructure.Basic;
 
 public class fibo {
     public static void main(String[] args) {
