@@ -16,5 +16,18 @@ public class MyArrayListTest {
         System.out.println(l.get(3));
         l.set(99, 2);
         System.out.println(l);
+
+
+        MyArrayListOfT lt = new MyArrayListOfT<String>();
+        lt.add("boy");
+        System.out.println(lt.get(0));
+
+        MyArrayListOfT lt2 = new MyArrayListOfT<Integer>();
+        lt2.add(11);
+        lt2.add(12);
+        lt2.add(13);
+        System.out.println(lt2.get(1));
+        lt2.removeAt(1);
+        System.out.println(lt2.get(1));
     }
 }
