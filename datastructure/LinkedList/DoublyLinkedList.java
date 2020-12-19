@@ -49,6 +49,7 @@ public class DoublyLinkedList {
 
         n.next = n.next.next;
         n.next.prev = n;
+        size--;
     }
 
     public int get(int index) {
@@ -75,6 +76,10 @@ public class DoublyLinkedList {
         return n.data;
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public static void main(String[] args) {
         DoublyLinkedList dl = new DoublyLinkedList();
         dl.addLast(10);
@@ -86,6 +91,9 @@ public class DoublyLinkedList {
         dl.addLast(70);
         dl.addLast(80);
 
+        System.out.println(dl.getSize());
+        dl.removeAt(4);
+        System.out.println(dl.getSize());
         System.out.println(dl.get(4));
         dl.removeAt(4);
         System.out.println(dl.get(4));
